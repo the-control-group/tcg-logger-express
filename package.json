@@ -1,29 +1,29 @@
 {
   "name": "tcg-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bunyan Logger for TCG apps",
-	"keywords": [
-		"log",
-		"json",
-		"logger",
-		"middleware"
-	],
+  "keywords": [
+    "log",
+    "json",
+    "logger",
+    "middleware"
+  ],
   "main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"files": [
-		"index.js"
-	],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.js"
+  ],
   "author": "Joe Furfaro",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/the-control-group/tcg-logger-express.git"
-	},
-	"engines": {
-		"node": ">=7.0"
-	},
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-control-group/tcg-logger-express.git"
+  },
+  "engines": {
+    "node": ">=7.0"
+  },
   "dependencies": {
     "bunyan": "^1.8.5",
     "bunyan-debug-stream": "^1.0.7",
