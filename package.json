@@ -1,0 +1,33 @@
+{
+  "name": "tcg-logger",
+  "version": "1.0.0",
+  "description": "Bunyan Logger for TCG apps",
+	"keywords": [
+		"log",
+		"json",
+		"logger",
+		"middleware"
+	],
+  "main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"files": [
+		"index.js"
+	],
+  "author": "Joe Furfaro",
+	"license": "MIT",
+	"engines": {
+		"node": ">=7.0"
+	},
+  "dependencies": {
+    "bunyan": "^1.8.5",
+    "bunyan-debug-stream": "^1.0.7",
+    "response-time": "^2.3.2",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.15.0"
+  }
+}
