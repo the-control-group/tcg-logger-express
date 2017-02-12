@@ -1,7 +1,7 @@
 /**
 * TCG Logger
 *
-* @exports a singleton Bunyan log instance for logging use
+* Class for creating a Bunyan logger with some added goodies
 */
 
 const Bunyan = require('bunyan'),
@@ -59,7 +59,7 @@ function errSerializer(err) {
 }
 
 class Logger extends Bunyan {
-	constructor({logStream = 'debug', logFile = ''} = {}) {
+	constructor({logStream = 'debug', logFile = '', logName = 'TCG Logger'} = {}) {
 		// Add streams based on config
 		const consoleDebugStream = {
 				level: 'debug',
@@ -81,7 +81,7 @@ class Logger extends Bunyan {
 		if(logFile) logStreams.push(fileStream);
 
 		super({
-			name: 'TCG Logger',
+			name: logName,
 			streams: logStreams,
 			serializers: {
 				req: reqSerializer,

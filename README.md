@@ -1,4 +1,4 @@
-# TCG Express Logger Module
+# TCG Logger Module for Express
 
 Built on [Bunyan](https://github.com/trentm/node-bunyan). Built-in Express middleware includes appending a child logger to each request and response times.
 
@@ -23,7 +23,13 @@ Options are not required. Defaults to `'debug'` log stream only.
 
 ```JavaScript
 const log = new Logger({
-	logStream: <'debug', 'json', or false>, // Debug for human readable logs to stdout, false to disable stdout, and json for ...well... json
-	logFile: '/absolute/path/to/logfile' // Pass a string absolute path for logging to a file, leave empty to disable
+	// Debug for human readable logs to stdout, false to disable stdout, and json for ...well... json
+	logStream: <'debug', 'json', or false>,
+
+	// Pass a string absolute path for logging to a file, leave empty to disable
+	logFile: '/absolute/path/to/logfile',
+
+	// Name to give the logger
+	logName: 'TCG Logger'
 });
 ```
