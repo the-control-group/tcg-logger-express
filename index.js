@@ -92,9 +92,17 @@ class Logger extends Bunyan {
 	}
 
 	/**
+	 * Overwrite the child prototype
+	 */
+	child(options = {}, simple) {
+		return new Bunyan(this, options, simple);
+	}
+
+	/**
 	 * Returns an array of middleware pertaining to the logger
 	 */
 	middleware() {
+
 		return [
 			(req, res, next) => {
 				req.log = this.child({req_id: uuid.v4()});
