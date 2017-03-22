@@ -24,12 +24,20 @@ Options are not required. Defaults to `'debug'` log stream only.
 ```JavaScript
 const log = new Logger({
 	// Debug for human readable logs to stdout, false to disable stdout, and json for ...well... json
-	logStream: <'debug', 'json', or false>,
+	logStream: <'debug', 'json', false>,
 
 	// Pass a string absolute path for logging to a file, leave empty to disable
 	logFile: '/absolute/path/to/logfile',
 
 	// Name to give the logger
-	logName: 'TCG Logger'
+	logName: 'TCG Logger',
+
+	// Minimum log level - defaults to 'debug' for debug streams, 'info' for all others
+	logLevel: <'debug', 'info', 'warn', 'error'>,
+
+	// Custom Bunyan serializers - see https://github.com/trentm/node-bunyan#serializers for docs
+	reqSerializer,
+	resSerializer,
+	errSerializer
 });
 ```
