@@ -35,27 +35,9 @@ function defaultReqSerializer(req) {
 	return obj;
 }
 
-// Error stack handler
-function getFullErrorStack(err) {
-	let ret = err.stack || err.toString();
-	if (err.cause && typeof (err.cause) === 'function') {
-		const cex = err.cause();
-		if (cex) {
-			ret += '\nCaused by: ' + getFullErrorStack(cex);
-		}
-	}
-	return (ret);
-}
-
-// Custom Error serializer to encompass custom error types
+// Simply return the err
 function defaultErrSerializer(err) {
-	if (!err || !err.stack) return err;
-
-	const obj = Object.assign({}, err, {
-		stack: getFullErrorStack(err)
-	});
-
-	return obj;
+	return err;
 }
 
 class Logger extends Bunyan {
