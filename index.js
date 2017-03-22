@@ -10,7 +10,7 @@ const Bunyan = require('bunyan'),
 	uuid = require('uuid');
 
 // Custom serializer for the response object
-function resSerializer(res) {
+function defaultResSerializer(res) {
 	if (!res || !res.statusCode) return res;
 
 	return {
@@ -21,7 +21,7 @@ function resSerializer(res) {
 }
 
 // Custom serialize for the request object
-function reqSerializer(req) {
+function defaultReqSerializer(req) {
 	if (!req || !req.connection) return req;
 
 	const obj = {
@@ -48,7 +48,7 @@ function getFullErrorStack(err) {
 }
 
 // Custom Error serializer to encompass custom error types
-function errSerializer(err) {
+function defaultErrSerializer(err) {
 	if (!err || !err.stack) return err;
 
 	const obj = Object.assign({}, err, {
@@ -59,19 +59,27 @@ function errSerializer(err) {
 }
 
 class Logger extends Bunyan {
-	constructor({logStream = 'debug', logFile = '', logName = 'TCG Logger'} = {}) {
+	constructor({
+		logStream = 'debug',
+		logFile = '',
+		logName = 'TCG Logger',
+		logLevel = logStream === 'debug' ? 'debug' : 'info',
+		reqSerializer = defaultReqSerializer,
+		resSerializer = defaultResSerializer,
+		errSerializer = defaultErrSerializer
+	} = {}) {
 		// Add streams based on config
 		const consoleDebugStream = {
-				level: 'debug',
+				level: logLevel,
 				type: 'raw',
 				stream: bunyanDebugStream({basepath: __dirname})
 			},
 			consoleJsonStream = {
-				level: 'info',
+				level: logLevel,
 				stream: process.stdout
 			},
 			fileStream = {
-				level: 'warn',
+				level: logLevel,
 				path: logFile
 			},
 			logStreams = [];
