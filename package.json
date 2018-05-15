@@ -1,6 +1,6 @@
 {
   "name": "tcg-logger",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Bunyan Logger for TCG apps",
   "keywords": [
     "log",
